@@ -13,10 +13,10 @@ spec:
   - name: 3-tire-web-app_api 
     image: 643370628328.dkr.ecr.us-east-2.amazonaws.com/3-tire-web-app_api:latest
     ports:
-      - containerPort: 3000
+      - containerPort: 3001
       
   - name: postgres:11.2-alpine  
     image: postgres:11.2-alpine 
     ports:
-      - containerPort: 3000      
+      - containerPort: 5432    
      
