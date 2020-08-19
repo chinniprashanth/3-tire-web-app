@@ -9,15 +9,15 @@ pipeline {
    
    
    stages {
-   stage('checkout') {
-         steps {
+     stage('checkout') {
+       steps {
             // Get some code from a GitHub repositoryn
             git 'https://github.com/chinniprashanth/3-tire-web-app.git'
         }
        
         }
     
-	stage ('Build Docker Image'){
+   stage ('Build Docker Image'){
      steps {
      sh '''
       cd 3-tire-web-app/
@@ -30,6 +30,11 @@ pipeline {
      steps {
      sh '''
        aws ecr get-login-password --region us-east-2 | docker login --username AWS --password-stdin 643370628328.dkr.ecr.us-east-2.amazonaws.com
+       #docker tag the images
+       docker tag 3-tire-web-app_api:latest 643370628328.dkr.ecr.us-east-2.amazonaws.com/3-tire-web-app_api:latest
+       docker tag 3-tire-web-app_webapp:latest 643370628328.dkr.ecr.us-east-2.amazonaws.com/3-tire-web-app_webapp:latest
+       docker tag postgres:latest 643370628328.dkr.ecr.us-east-2.amazonaws.com/postgres:latest
+       #docker publish to ecr repo
        docker push 643370628328.dkr.ecr.us-east-2.amazonaws.com/3-tire-web-app_api
        docker push 643370628328.dkr.ecr.us-east-2.amazonaws.com/3-tire-web-app_webapp
        docker push 643370628328.dkr.ecr.us-east-2.amazonaws.com/postgres
