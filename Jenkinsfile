@@ -33,11 +33,10 @@ pipeline {
        #docker tag the images
        docker tag 3-tire-web-app_api:latest 643370628328.dkr.ecr.us-east-2.amazonaws.com/3-tire-web-app_api:latest
        docker tag 3-tire-web-app_webapp:latest 643370628328.dkr.ecr.us-east-2.amazonaws.com/3-tire-web-app_webapp:latest
-       docker tag postgres:latest 643370628328.dkr.ecr.us-east-2.amazonaws.com/postgres:latest
+       
        #docker publish to ecr repo
        docker push 643370628328.dkr.ecr.us-east-2.amazonaws.com/3-tire-web-app_api
        docker push 643370628328.dkr.ecr.us-east-2.amazonaws.com/3-tire-web-app_webapp
-       docker push 643370628328.dkr.ecr.us-east-2.amazonaws.com/postgres
       '''
       
       }
