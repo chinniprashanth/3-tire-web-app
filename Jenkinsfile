@@ -21,7 +21,7 @@ pipeline {
      steps {
      sh '''
       cd 3-tire-web-app/
-	    docker-compose up --build 
+      docker-compose up --build 
      '''
 
    }
@@ -29,9 +29,9 @@ pipeline {
    stage ('Publish Docker Image'){
      steps {
      sh '''
-	     aws ecr get-login-password --region us-east-2 | docker login --username AWS --password-stdin 643370628328.dkr.ecr.us-east-2.amazonaws.com
-       docker push 643370628328.dkr.ecr.us-east-2.amazonaws.com/docker-frontend-backend-db_api
-       docker push 643370628328.dkr.ecr.us-east-2.amazonaws.com/docker-frontend-backend-db_webapp
+       aws ecr get-login-password --region us-east-2 | docker login --username AWS --password-stdin 643370628328.dkr.ecr.us-east-2.amazonaws.com
+       docker push 643370628328.dkr.ecr.us-east-2.amazonaws.com/3-tire-web-app_api
+       docker push 643370628328.dkr.ecr.us-east-2.amazonaws.com/3-tire-web-app_webapp
        docker push 643370628328.dkr.ecr.us-east-2.amazonaws.com/postgres
       '''
       
