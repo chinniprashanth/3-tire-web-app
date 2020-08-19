@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: 3-tire-web-pod
+spec:
+  restartPolicy: Never
+  containers:
+  - name: 3-tire-web-app_webapp
+    image: 643370628328.dkr.ecr.us-east-2.amazonaws.com/3-tire-web-app_webapp:latest
+    ports:
+      - containerPort: 3000
+
+  - name: 3-tire-web-app_api 
+    image: 643370628328.dkr.ecr.us-east-2.amazonaws.com/3-tire-web-app_api:latest
+    ports:
+      - containerPort: 3000
+      
+  - name: postgres:11.2-alpine  
+    image: postgres:11.2-alpine 
+    ports:
+      - containerPort: 3000      
+     
