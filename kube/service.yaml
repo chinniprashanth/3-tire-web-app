@@ -1,14 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: my-service
-  namespace: default
-  labels:
-    app: my-app
+  name: test-service
 spec:
-  selector:
-    app: my-app
+  type: LoadBalancer
   ports:
-    - protocol: TCP
-      port: 80
-      targetPort: 80
+  - name: 3-tire-web
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: 3-tire-web
