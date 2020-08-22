@@ -1,0 +1,13 @@
+- hosts: localhost
+  gather_facts: false
+  tasks:
+   - name: Create a Service object by reading the definition from a file
+     k8s:
+      kubeconfig: '~/Documents/sample-project/eks-kubeconfig'
+      state: present
+      src: /kube/service.yaml
+   - name: Create a Service object by reading the definition from a file
+     k8s:
+      kubeconfig: '~/Documents/sample-project/eks-kubeconfig'
+      state: present
+      src: /kube/deployment.yaml
