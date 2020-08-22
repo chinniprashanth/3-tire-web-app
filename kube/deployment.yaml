@@ -1,22 +1,32 @@
-apiVersion: v1/apps
+apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: 3-tire-web-pod
+  name: 3-tire-web-app
 spec:
-  restartPolicy: Never
+  replicas: 3
+  selector:
+    matchLabels:
+      app: 3-tire-web-app
+  template:
+   metadata:
+     labels:
+       app: 3-tire-web-app
   containers:
   - name: 3-tire-web-app_webapp
     image: 643370628328.dkr.ecr.us-east-2.amazonaws.com/3-tire-web-app_webapp:latest
+    imagePullPolicy: Always
     ports:
       - containerPort: 3000
 
   - name: 3-tire-web-app_api 
     image: 643370628328.dkr.ecr.us-east-2.amazonaws.com/3-tire-web-app_api:latest
+    imagePullPolicy: Always
     ports:
       - containerPort: 3001
       
-  - name: postgres:11.2-alpine  
+  - name: postgres  
     image: 643370628328.dkr.ecr.us-east-2.amazonaws.com/postgress:latest
+    imagePullPolicy: Always
     ports:
       - containerPort: 5432    
      
