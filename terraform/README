@@ -4,3 +4,5 @@ Please set as default awscli configure before running the terraform file given b
  aws_access_key_id=***********
  aws_secret_access_key=****************************
  region=us-east-2
+
+Please change the vpc and subnet id details in eks.tf file.
