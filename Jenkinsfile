@@ -43,6 +43,12 @@ pipeline {
       
       }
      }
+   stage ('Ansible deployment to EKS'){
+     steps {
+     sh '''  
+     cd 3-tire-web-app/
+     ansible-playbook k8.yaml
+     '''
    }
 
   }
