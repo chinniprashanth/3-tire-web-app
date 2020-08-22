@@ -41,6 +41,6 @@ spec:
     kind: Deployment
     name: 3-tire-web-app
   minReplicas: 1 # TODO: Update the no of minReplicas
-  maxReplicas: 1 # TODO: Update the no of maxReplicas
+  maxReplicas: 3 # TODO: Update the no of maxReplicas
   targetCPUUtilizationPercentage: 80
      
