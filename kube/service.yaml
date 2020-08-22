@@ -5,9 +5,9 @@ metadata:
 spec:
   type: LoadBalancer
   ports:
-  - name: 3-tire-web
+  - name: 3-tire-web-app
     port: 80
     protocol: TCP
     targetPort: 3000
   selector:
-    app: 3-tire-web
+    app: 3-tire-web-app
