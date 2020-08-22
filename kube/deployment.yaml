@@ -28,5 +28,19 @@ spec:
     image: 643370628328.dkr.ecr.us-east-2.amazonaws.com/postgress:latest
     imagePullPolicy: Always
     ports:
-      - containerPort: 5432    
+      - containerPort: 5432   
+---
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: 3-tire-web-app
+  #namespace: default #TODO: Make the namespace parameterized.
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1beta1
+    kind: Deployment
+    name: 3-tire-web-app
+  minReplicas: 1 # TODO: Update the no of minReplicas
+  maxReplicas: 1 # TODO: Update the no of maxReplicas
+  targetCPUUtilizationPercentage: 80
      
