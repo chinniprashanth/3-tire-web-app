@@ -46,18 +46,21 @@ pipeline {
     stage ('Eks cluster creation using terraform'){
      steps {
      sh ''' 
-        cd ../terraform/
+        cd terraform/
         terraform init
         terraform plan
         terraform apply -auto-approve
         '''
-       
+     }
+    }    
    stage ('Ansible deployment to EKS'){
      steps {
      sh '''  
-     cd 3-tire-web-app/
+     cd ../3-tire-web-app/
      ansible-playbook k8.yaml
      '''
    }
 
   }
+ } 
+}   
