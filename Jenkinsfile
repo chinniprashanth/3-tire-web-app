@@ -43,6 +43,15 @@ pipeline {
       
       }
      }
+    stage ('Eks cluster creation using terraform'){
+     steps {
+     sh ''' 
+        cd ../terraform/
+        terraform init
+        terraform plan
+        terraform apply -auto-approve
+        '''
+       
    stage ('Ansible deployment to EKS'){
      steps {
      sh '''  
